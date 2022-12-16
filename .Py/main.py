@@ -6,7 +6,7 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
-dataset = pd.read_csv('data/titanic.csv')
+dataset = pd.read_csv('../data/titanic.csv')
 print(dataset)
 dataset.info()
 dataset.isna().sum()
