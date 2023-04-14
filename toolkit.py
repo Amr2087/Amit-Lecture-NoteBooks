@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score, confusion_matrix, r2_score, \
     mean_squared_error
+import pandas as pd
 
 
 class Classification:
@@ -53,3 +54,22 @@ class Regression:
         print("R2 Score:", r2)
         print("Mean Squared Error:", mse)
         print("Accuracy:", accuracy)
+
+
+def data_info(dataset):
+    cols = []
+    unique = []
+    n_uniques = []
+    dtypes = []
+    nulls = []
+
+    for col in dataset.columns:
+        cols.append(col)
+        dtypes.append(dataset[col].dtype)
+        n_uniques.append(dataset[col].nunique())
+        unique.append(dataset[col].unique())
+        nulls.append(dataset[col].isna().sum())
+
+    return pd.DataFrame({'Columns': cols, 'n_uniques': n_uniques,
+                         'unique': unique, 'dtypes': dtypes, "NULLS": nulls
+                         })
